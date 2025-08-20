@@ -1,4 +1,11 @@
-import { Text, StyleSheet, TextInput, Alert, View } from 'react-native';
+import {
+  Text,
+  StyleSheet,
+  TextInput,
+  Alert,
+  TouchableOpacity,
+  Platform
+} from 'react-native';
 import { theme } from '@/theme';
 import { PlantlyButton } from '@/components/PlantlyButton';
 import { useState } from 'react';
@@ -6,8 +13,10 @@ import { PlantlyImage } from '@/components/PlantlyImage';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { usePlantStore } from '@/store/plantsStore';
 import { useRouter } from 'expo-router';
+import * as ImagePicker from 'expo-image-picker';
 
 export default function NewScreen() {
+  const [imageUri, setImageUri] = useState<string>();
   const [name, setName] = useState<string>();
   const [days, setDays] = useState<string>();
   const addPlant = usePlantStore((state) => state.addPlant);
@@ -38,15 +47,36 @@ export default function NewScreen() {
     console.log('Adding plant', name, days);
   };
 
+  const handleChooseImage = async () => {
+    if (Platform.OS === 'web') return;
+
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ['images'],
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 1
+    });
+
+    if (!result.canceled) {
+      setImageUri(result.assets[0].uri);
+    }
+
+    console.log(result);
+  };
+
   return (
     <KeyboardAwareScrollView
       style={styles.container}
       contentContainerStyle={styles.contentContainer}
       keyboardShouldPersistTaps="handled"
     >
-      <View style={styles.centered}>
-        <PlantlyImage />
-      </View>
+      <TouchableOpacity
+        style={styles.centered}
+        onPress={handleChooseImage}
+        activeOpacity={0.8}
+      >
+        <PlantlyImage imageUri={imageUri} />
+      </TouchableOpacity>
       <Text style={styles.label}>Name</Text>
       <TextInput
         value={name}
@@ -91,6 +121,7 @@ const styles = StyleSheet.create({
     marginBottom: 8
   },
   centered: {
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: 24
   }
 });
