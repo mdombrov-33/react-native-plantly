@@ -3,6 +3,7 @@ import Entypo from "@expo/vector-icons/Entypo";
 import { Feather } from "@expo/vector-icons";
 import { theme } from "@/theme";
 
+//* Similar to auth logic
 const hasFinishedOnboarding = false;
 
 export default function Layout() {
