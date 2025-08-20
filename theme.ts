@@ -3,5 +3,6 @@ export const theme = {
   colorWhite: '#fff',
   colorLeafyGreen: '#206a42',
   colorAppleGreen: '#8db600',
-  colorLimeGreen: '#d0e57e'
+  colorLimeGreen: '#d0e57e',
+  colorLightGrey: '#eee'
 };
