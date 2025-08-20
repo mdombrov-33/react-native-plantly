@@ -1,5 +1,5 @@
 import { FlatList, StyleSheet } from 'react-native';
-import { theme } from '../../theme';
+import { theme } from '../../../theme';
 import { usePlantStore } from '@/store/plantsStore';
 import { PlantCard } from '@/components/PlantCard';
 import { PlantlyButton } from '@/components/PlantlyButton';
