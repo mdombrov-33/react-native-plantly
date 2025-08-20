@@ -1,10 +1,10 @@
 import { Text, View, StyleSheet } from "react-native";
-import { theme } from "../theme";
+import { theme } from "@/theme";
 
-export default function ProfileScreen() {
+export default function OnboardingScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Profile</Text>
+      <Text style={styles.text}>Onboarding</Text>
     </View>
   );
 }
