@@ -1,5 +1,5 @@
-import { Text, View, StyleSheet } from "react-native";
-import { theme } from "@/theme";
+import { Text, View, StyleSheet } from 'react-native';
+import { theme } from '@/theme';
 
 export default function OnboardingScreen() {
   return (
@@ -12,11 +12,11 @@ export default function OnboardingScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: theme.colorWhite,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: theme.colorWhite
   },
   text: {
-    fontSize: 24,
-  },
+    fontSize: 24
+  }
 });

@@ -1,17 +1,39 @@
-const { defineConfig } = require("eslint/config");
-const expoConfig = require("eslint-config-expo/flat");
-const eslintPluginPrettierRecommended = require("eslint-plugin-prettier/recommended");
-const eslintPluginReactNative = require("eslint-plugin-react-native");
+const { defineConfig } = require('eslint/config');
+const expoConfig = require('eslint-config-expo/flat');
+const prettierPlugin = require('eslint-plugin-prettier');
+const prettierConfig = require('eslint-config-prettier');
+const reactNativePlugin = require('eslint-plugin-react-native');
 
 module.exports = defineConfig([
   expoConfig,
-  eslintPluginPrettierRecommended,
+  {
+    ignores: ['dist/*']
+  },
   {
     plugins: {
-      "react-native": eslintPluginReactNative,
+      prettier: prettierPlugin,
+      'react-native': reactNativePlugin
     },
     rules: {
-      "react-native/no-unused-styles": "error",
-    },
+      // Prettier rules
+      'prettier/prettier': [
+        'error',
+        {
+          singleQuote: true,
+          trailingComma: 'none',
+          semi: true,
+          tabWidth: 2,
+          printWidth: 80,
+          arrowParens: 'always'
+        }
+      ],
+      // React Native specific rules
+      'react-native/no-unused-styles': 'error',
+      'react-native/split-platform-components': 'error',
+      // 'react-native/no-inline-styles': 'warn',
+      // 'react-native/no-color-literals': 'warn',
+      'react-native/no-raw-text': 'error'
+    }
   },
+  prettierConfig
 ]);
