@@ -1,8 +1,9 @@
-import { Redirect, Tabs } from 'expo-router';
+import { Link, Redirect, Tabs } from 'expo-router';
 import Entypo from '@expo/vector-icons/Entypo';
-import { Feather } from '@expo/vector-icons';
 import { theme } from '@/theme';
 import { useUserStore } from '@/store/userStore';
+import { AntDesign, Feather } from '@expo/vector-icons';
+import { Pressable } from 'react-native';
 
 export default function Layout() {
   //* Similar to auth logic
@@ -23,7 +24,20 @@ export default function Layout() {
           tabBarShowLabel: false,
           tabBarIcon: ({ size, color }) => (
             <Entypo name="leaf" size={size} color={color} />
-          )
+          ),
+          headerRight: () => {
+            return (
+              <Link href="/new" asChild>
+                <Pressable style={{ marginRight: 18 }} hitSlop={20}>
+                  <AntDesign
+                    name="pluscircleo"
+                    size={24}
+                    color={theme.colorGreen}
+                  />
+                </Pressable>
+              </Link>
+            );
+          }
         }}
       />
       <Tabs.Screen
