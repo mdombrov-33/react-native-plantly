@@ -38,6 +38,17 @@
             "node_modules/@expo-google-fonts/caveat/400Regular/Caveat_400Regular.ttf"
           ]
         }
+      ],
+      [
+        "expo-quick-actions",
+        {
+          "androidIcons": {
+            "leaf": {
+              "foregroundImage": "./assets/leaf.png",
+              "backgroundColor": "#fff"
+            }
+          }
+        }
       ]
     ],
     "extra": {
