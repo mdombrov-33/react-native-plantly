@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Platform } from 'react-native';
 import { theme } from '@/theme';
 import { useUserStore } from '@/store/userStore';
 import { useRouter } from 'expo-router';
@@ -52,6 +52,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: theme.colorWhite,
     textAlign: 'center',
-    marginBottom: 24
+    marginBottom: 24,
+    fontFamily: Platform.select({
+      ios: 'Caveat-Regular', //* Name coming from postcript name from phonebook on ios device
+      android: 'Caveat_400Regular'
+    })
   }
 });
